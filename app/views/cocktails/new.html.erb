@@ -1,0 +1,6 @@
+<%= simple_form_for [ @cocktail ] do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "Submit name", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Add Doses", new_cocktail_dose_path(@cocktail_id), class: "btn btn-primary" %>
