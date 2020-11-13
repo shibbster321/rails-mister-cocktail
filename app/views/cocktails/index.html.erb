@@ -2,15 +2,18 @@
   <h1>My website</h1>
   <p>Welcome to party town</p>
 </div>
-<%= cl_image_tag("egvignciwafnzhce894s.jpg", class: "card-image") %>
 
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-2">
+<div class="container mt-2">
+  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
     <% @cocktails.each do |item| %>
     <div class="col mb-4">
       <%= link_to cocktail_path(item), class: "text-decoration-none text-dark" do %>
-        <div class="card">
-          <img src="mojito.jpg" class="card-img-top" alt="...">
+        <div class="card " >
+          <%  if item.photo.attachment %>
+            <%= cl_image_tag(item.photo.key, class: "card-img-top") %>
+          <% else %>
+            <%= image_tag 'https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg' %>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>
             <p class="card-text"><%= item.blurb %></p>

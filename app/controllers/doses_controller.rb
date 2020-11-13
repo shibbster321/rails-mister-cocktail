@@ -5,6 +5,13 @@ class DosesController < ApplicationController
     @ingredients = Ingredient.all
   end
 
+  def destroy
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @cocktail.destroy
+    @garden.destroy
+    redirect_to root_path, notice: 'Dose was successfully destroyed.'
+  end
+
   def create
     @cocktail = Cocktail.find(params[:cocktail_id])
     @dose = Dose.new(dose_params)

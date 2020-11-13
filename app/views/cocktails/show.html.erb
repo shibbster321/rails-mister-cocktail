@@ -1,8 +1,14 @@
 <div class="container">
-  <div class="my-2 p-2 bg-white rounded">
-    <%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
-    <h1> <%= @cocktail.name %> </h1>
-    <p class="font-light font-italic"><%= @cocktail.blurb %></p>
+  <div class="my-2 p-2 bg-white rounded d-flex justify-content-between">
+    <div class="mt-3 ml-2">
+      <h1 class=""> <%= @cocktail.name %> </h1>
+      <p class="font-light font-italic"><%= @cocktail.blurb %></p>
+    </div>
+    <%  if @cocktail.photo.attachment %>
+    <%= cl_image_tag(item.photo.key, class: "card-img-top") %>
+    <% else %>
+    <%= image_tag 'https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg', class: "box-image" %>
+    <% end %> 
   </div>
   <h5>Instructions to make one</h5>
   <ul>
