@@ -1,1 +1,13 @@
-<h1> <%= @cocktail.name %> </h1>
+<div class="container">
+  <div class="my-2 p-2 bg-white rounded">
+    <h1> <%= @cocktail.name %> </h1>
+    <p class="font-light font-italic"><%= @cocktail.blurb %></p>
+  </div>
+  <h5>Instructions to make one</h5>
+  <ul>
+    <% @cocktail.doses.each do |dose| %>
+      <li> <%= dose.description %> <%= dose.ingredient.name %></li>
+    <% end %>
+  </ul>
+  <%= link_to "Edit", edit_cocktail_path, class: "btn btn-secondary" %> 
+ </div>
