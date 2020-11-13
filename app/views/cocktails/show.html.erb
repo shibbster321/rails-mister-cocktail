@@ -2,13 +2,19 @@
   <div class="my-2 p-2 bg-white rounded d-flex justify-content-between">
     <div class="mt-3 ml-2">
       <h1 class=""> <%= @cocktail.name %> </h1>
-      <p class="font-light font-italic"><%= @cocktail.blurb %></p>
+      <p class="font-light font-italic mb-0"><%= @cocktail.blurb %></p>
+       
     </div>
-    <%  if @cocktail.photo.attachment %>
-    <%= cl_image_tag(item.photo.key, class: "card-img-top") %>
-    <% else %>
-    <%= image_tag 'https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg', class: "box-image" %>
-    <% end %> 
+    <div class="position-relative">
+      <%  if @cocktail.photo.attachment %>
+        <%= cl_image_tag(@cocktail.photo.key, class: "box-image") %>
+      <% else %>
+        <%= image_tag 'https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg', class: "box-image" %>
+      <% end %> 
+      <div class="top-corner">
+        <%= link_to "Edit", edit_cocktail_path, class: "btn-edit" %>
+      </div>
+    </div>
   </div>
   <h5>Instructions to make one</h5>
   <ul>
@@ -16,6 +22,6 @@
       <li> <%= dose.description %> <%= dose.ingredient.name %></li>
     <% end %>
   </ul>
-  <%= link_to "Edit", edit_cocktail_path, class: "btn btn-secondary" %> 
+  <%= link_to "Add more doses", new_cocktail_dose_path(@cocktail), class: "btn btn-secondary" %> 
  </div>
  
